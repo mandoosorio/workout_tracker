@@ -21,13 +21,16 @@ async function initExercise() {
   let workout;
 
   if (location.search.split("=")[1] === undefined) {
+    console.log("location is undefined");
     workout = await API.createWorkout()
     console.log(workout)
   }
   if (workout) {
+    console.log("location has an id");
     location.search = "?id=" + workout._id;
+  } else {
+    console.log("none of the above");
   }
-
 }
 
 initExercise();

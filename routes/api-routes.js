@@ -13,10 +13,20 @@ module.exports = function(app) {
         });
     });
 
-    app.post("api/workouts", ({ body }, res) => {
+    app.get("/api/workouts/range", function(req, res) {
+        db.Workout.find()
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+    });
+
+    app.post("/api/workouts", ({ body }, res) => {
         db.Workout.create(body)
         .then(dbWorkout => {
-            res.json(dbWourkout);
+            res.json(dbWorkout);
         })
         .catch(({ message }) => {
             console.log("Error in POST /api/workouts", message);

@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3003;
 const app = express();
 
+// const databaseURL = "workouts";
+// const collections = "workouts";
+// const db = mongojs(databaseURL, collections);
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
